@@ -5,7 +5,7 @@ const concat = require('gulp-concat'); //Соединяет в один файл
 const uglify = require('gulp-uglify-es').default; //Сжимает JavaScript
 const scss = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer'); // Создание префиксов для лучшей совместимости со старыми браузерами. 
-const cleancss = require('gulp-clean-css');
+const cleancss = require('gulp-clean-css'); //Минифицирует стили
 const imagemin = require('gulp-imagemin');
 const newer = require('gulp-newer');
 const del = require('del');
@@ -82,6 +82,10 @@ function startwatch() {
 	watch('app/images/src/**/*', images);
  
 }
+
+// 1) CSS мы пишем теперь в app.min.css или в main.scss
+// 2) Зачем нам фукнции cleandist чтобы очистить папку dist и cleanimg чтобы очищать папку dist с рисунками, если это и есть папки где хранятся наши финальные версии проекта.
+// 3) Нужно ли нам будет заново устанавливать все эти модули для каждого нового проекта или теперь просто нужно будет прописывать функции, пеерменные, константы и экспорты?
 
 exports.browsersync = browsersync;
 exports.scripts = scripts;
