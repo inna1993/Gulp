@@ -36,7 +36,7 @@ function styles() {
 	.pipe(eval(preprocessor)()) // Преобразуем значение переменной "preprocessor" в функцию
 	.pipe(concat('app.min.css')) // Конкатенируем в файл app.min.js
 	.pipe(autoprefixer({ overrideBrowserslist: ['last 10 versions'], grid: true })) // Создадим префиксы с помощью Autoprefixer
-	.pipe(cleancss( { level: { 1: { specialComments: 0 } }, format: 'beautify'} )) // Минифицируем стили; закомментировать часть ", format: 'beautify'" чтобы код был в одну строку
+	.pipe(cleancss( { level: { 1: { specialComments: 0 } }/* , format: 'beautify' */ } )) // Минифицируем стили, часть ", format: 'beautify'" чтобы код в app.min.css был не в одну строку
 	.pipe(dest('app/css/')) // Выгрузим результат в папку "app/css/"
 	.pipe(browserSync.stream()) // Сделаем инъекцию в браузер
 }
@@ -83,9 +83,6 @@ function startwatch() {
  
 }
 
-// 1) CSS мы пишем теперь в app.min.css или в main.scss
-// 2) Зачем нам фукнции cleandist чтобы очистить папку dist и cleanimg чтобы очищать папку dist с рисунками, если это и есть папки где хранятся наши финальные версии проекта.
-// 3) Нужно ли нам будет заново устанавливать все эти модули для каждого нового проекта или теперь просто нужно будет прописывать функции, пеерменные, константы и экспорты?
 
 exports.browsersync = browsersync;
 exports.scripts = scripts;
